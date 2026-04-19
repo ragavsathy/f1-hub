@@ -1,9 +1,10 @@
-"use client";
-
 import Link from 'next/link';
-import { drivers } from '../../data/drivers';
+import { PrismaClient } from '@prisma/client';
 
-export default function DriversDirectory() {
+const prisma = new PrismaClient();
+
+export default async function DriversDirectory() {
+  const drivers = await prisma.driver.findMany();
   return (
     <main className="container animate-slide-up">
       <Link href="/" className="back-button">← Back to Dashboard</Link>

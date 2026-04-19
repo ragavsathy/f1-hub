@@ -1,4 +1,9 @@
-export const drivers = [
+import pkg from '@prisma/client';
+const { PrismaClient } = pkg;
+
+const prisma = new PrismaClient()
+
+const driversData = [
   {
     id: "max-verstappen",
     name: "Max Verstappen",
@@ -144,3 +149,64 @@ export const drivers = [
     ]
   }
 ];
+
+async function main() {
+  await prisma.lap.deleteMany()
+  await prisma.race.deleteMany()
+  await prisma.driver.deleteMany()
+
+  for (const drv of driversData) {
+    const createdDriver = await prisma.driver.create({
+      data: {
+        id: drv.id,
+        name: drv.name,
+        team: drv.team,
+        colorClass: drv.colorClass,
+        title: drv.title,
+        summary: drv.summary,
+        points: drv.points || 0,
+        rank: drv.rank || 0,
+      }
+    });
+
+    if (drv.races) {
+      for (const race of drv.races) {
+        const createdRace = await prisma.race.create({
+          data: {
+            raceId: race.raceId,
+            name: race.name,
+            status: race.status,
+            theGood: race.theGood || null,
+            theBad: race.theBad || null,
+            telemetry: race.telemetry || null,
+            driverId: createdDriver.id
+          }
+        });
+
+        if (race.laps) {
+          for (const lap of race.laps) {
+            await prisma.lap.create({
+              data: {
+                lapNum: lap.lapNum,
+                time: lap.time,
+                tyre: lap.tyre,
+                pitStop: lap.pitStop || false,
+                raceId: createdRace.id
+              }
+            });
+          }
+        }
+      }
+    }
+  }
+
+  console.log("Database perfectly seeded!");
+}
+
+main()
+  .then(async () => { await prisma.$disconnect() })
+  .catch(async (e) => {
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })

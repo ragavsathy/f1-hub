@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Driver {
+  id         String   @id
+  name       String
+  team       String
+  colorClass String
+  title      String
+  summary    String
+  points     Int      @default(0)
+  rank       Int      @default(0)
+  races      Race[]
+}
+
+model Race {
+  id        Int      @id @default(autoincrement())
+  raceId    String
+  name      String
+  status    String
+  theGood   String?
+  theBad    String?
+  telemetry String?
+  driverId  String
+  driver    Driver   @relation(fields: [driverId], references: [id])
+  laps      Lap[]
+}
+
+model Lap {
+  id       Int     @id @default(autoincrement())
+  lapNum   Int
+  time     String
+  tyre     String
+  pitStop  Boolean @default(false)
+  raceId   Int
+  race     Race    @relation(fields: [raceId], references: [id], onDelete: Cascade)
+}
