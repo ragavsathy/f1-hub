@@ -1,13 +1,24 @@
 "use client";
 
 import Link from 'next/link';
-import { use } from 'react';
+import { use, useState } from 'react';
 import { drivers } from '../../../data/drivers';
 
 export default function DriverDashboard({ params }) {
-  // For Next.js 15+ App Router, dynamic params are a promise that must be resolved using React.use()
   const unwrappedParams = use(params);
   const driver = drivers.find(d => d.id === unwrappedParams.id);
+  const [expanded, setExpanded] = useState({});
+
+  const toggleRace = (raceId) => {
+    setExpanded(prev => ({...prev, [raceId]: !prev[raceId]}));
+  };
+
+  const getTyreClass = (tyreStr) => {
+    if (tyreStr.includes("Soft")) return "tyre-soft";
+    if (tyreStr.includes("Medium")) return "tyre-medium";
+    if (tyreStr.includes("Hard")) return "tyre-hard";
+    return "";
+  };
 
   if (!driver) {
     return (
@@ -64,11 +75,44 @@ export default function DriverDashboard({ params }) {
                   </div>
                   <p style={{ color: 'rgba(255,255,255,0.85)', lineHeight: '1.6', margin: 0 }}>{race.theBad}</p>
                 </div>
+                
                 <div style={{ gridColumn: '1 / -1', background: 'rgba(0,0,0,0.15)', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem', borderLeft: '4px solid var(--text-muted)' }}>
                   <div style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '1px' }}>
                     ⏱️ Telemetry Highlights
                   </div>
                   <div style={{ fontFamily: 'monospace', fontSize: '1.1rem', color: 'var(--foreground)' }}>{race.telemetry}</div>
+                  
+                  {/* LAP DATA TOGGLE */}
+                  <button onClick={() => toggleRace(race.raceId)} className="toggle-btn">
+                    {expanded[race.raceId] ? "Hide Granular Lap Data" : "View Granular Lap Data"}
+                  </button>
+
+                  {/* EXPANDED TABLE */}
+                  {expanded[race.raceId] && race.laps && (
+                    <div style={{ marginTop: '1.5rem', overflowX: 'auto' }} className="animate-slide-up">
+                      <table className="telemetry-table">
+                        <thead>
+                          <tr>
+                            <th>Lap</th>
+                            <th>Lap Time</th>
+                            <th>Tyre Compound</th>
+                            <th>Strategic Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {race.laps.map(lap => (
+                            <tr key={lap.lapNum} className={lap.pitStop ? 'pit-lap' : ''}>
+                              <td style={{ fontWeight: 'bold', color: 'var(--text-muted)' }}>Lap {lap.lapNum}</td>
+                              <td style={{ fontFamily: 'monospace', fontSize: '1.1rem' }}>{lap.time}</td>
+                              <td><span className={getTyreClass(lap.tyre)}>{lap.tyre}</span></td>
+                              <td>{lap.pitStop ? <span style={{ color: 'var(--text-muted)', fontStyle: 'italic', fontSize: '0.85rem', fontWeight: 'bold' }}>PIT STOP</span> : '-'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+
                 </div>
               </div>
             ) : (

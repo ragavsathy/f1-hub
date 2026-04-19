@@ -241,3 +241,77 @@ body {
   flex-direction: column;
   gap: 0.75rem;
 }
+
+/* Tyre Pills */
+.tyre-soft {
+  background: rgba(225, 6, 0, 0.15);
+  color: #ff3333;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid rgba(225, 6, 0, 0.4);
+}
+
+.tyre-medium {
+  background: rgba(240, 200, 0, 0.15);
+  color: #fce300;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid rgba(240, 200, 0, 0.4);
+}
+
+.tyre-hard {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Telmetry Table */
+.telemetry-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.telemetry-table th {
+  text-align: left;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.telemetry-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.pit-lap {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.toggle-btn {
+  background: transparent;
+  color: var(--accent-teal);
+  border: 1px solid var(--accent-teal);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  margin-top: 1.5rem;
+}
+
+.toggle-btn:hover {
+  background: rgba(0, 210, 190, 0.1);
+}

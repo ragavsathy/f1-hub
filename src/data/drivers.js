@@ -13,7 +13,21 @@ export const drivers = [
         status: "Completed",
         theGood: "Flawless launch handling extreme load on dry tyres. Aggressive defense on lap 14 secured track position over Lando.",
         theBad: "Ignored initial suggestions to pit for mediums, costing roughly 1.5 seconds per lap under VSC.",
-        telemetry: "P2 - Avg pace: 1:13.4s | Fastest lap: 1:12.7s (L65) | Deg: Moderate"
+        telemetry: "P2 - Avg pace: 1:13.4s | Fastest lap: 1:12.7s (L65) | Deg: Moderate",
+        laps: [
+          { lapNum: 1, time: "1:16.820", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 2, time: "1:14.210", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 3, time: "1:14.050", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 4, time: "1:14.100", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 5, time: "1:14.300", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 6, time: "1:14.800", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 7, time: "1:15.200", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 8, time: "1:16.900", tyre: "Soft (C3)", pitStop: true },
+          { lapNum: 9, time: "1:35.200", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 10, time: "1:13.800", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 11, time: "1:13.600", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 12, time: "1:13.400", tyre: "Medium (C2)", pitStop: false }
+        ]
       },
       {
         raceId: "italian-gp-26",
@@ -36,7 +50,21 @@ export const drivers = [
         status: "Completed",
         theGood: "Capitalized immediately on Red Bull's delayed pit stop. Outstanding pace on hards through the second stint, stretching the lead.",
         theBad: "Slight wheelspin on race start dropped him briefly to P3, losing valuable early aerodynamic clean air.",
-        telemetry: "P1 - Avg pace: 1:13.1s | Fastest lap: 1:12.4s (L68) | Deg: Low"
+        telemetry: "P1 - Avg pace: 1:13.1s | Fastest lap: 1:12.4s (L68) | Deg: Low",
+        laps: [
+          { lapNum: 1, time: "1:17.320", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 2, time: "1:14.910", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 3, time: "1:14.550", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 4, time: "1:14.200", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 5, time: "1:14.100", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 6, time: "1:14.150", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 7, time: "1:14.300", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 8, time: "1:14.500", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 9, time: "1:16.200", tyre: "Medium (C2)", pitStop: true },
+          { lapNum: 10, time: "1:34.800", tyre: "Hard (C1)", pitStop: false },
+          { lapNum: 11, time: "1:13.100", tyre: "Hard (C1)", pitStop: false },
+          { lapNum: 12, time: "1:13.050", tyre: "Hard (C1)", pitStop: false }
+        ]
       },
       {
         raceId: "italian-gp-26",
@@ -59,7 +87,19 @@ export const drivers = [
         status: "Completed",
         theGood: "Braking control into Turn 1 was masterful, holding off Mercedes under heavy DRS threat.",
         theBad: "A slow 3.4s pit stop prevented Charles from challenging for P2. Setup was too harsh on front-left tyres.",
-        telemetry: "P3 - Avg pace: 1:13.5s | Fastest lap: 1:13.0s (L40) | Deg: High"
+        telemetry: "P3 - Avg pace: 1:13.5s | Fastest lap: 1:13.0s (L40) | Deg: High",
+        laps: [
+          { lapNum: 1, time: "1:17.500", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 2, time: "1:14.800", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 3, time: "1:14.900", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 4, time: "1:15.150", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 5, time: "1:15.800", tyre: "Soft (C3)", pitStop: false },
+          { lapNum: 6, time: "1:17.900", tyre: "Soft (C3)", pitStop: true },
+          { lapNum: 7, time: "1:38.200", tyre: "Hard (C1)", pitStop: false },
+          { lapNum: 8, time: "1:14.100", tyre: "Hard (C1)", pitStop: false },
+          { lapNum: 9, time: "1:14.000", tyre: "Hard (C1)", pitStop: false },
+          { lapNum: 10, time: "1:13.900", tyre: "Hard (C1)", pitStop: false }
+        ]
       },
       {
         raceId: "italian-gp-26",
@@ -82,7 +122,19 @@ export const drivers = [
         status: "Completed",
         theGood: "Nursed a set of dying mediums incredibly well, stretching stint 1 further than Pirelli's guidelines.",
         theBad: "Took too long to find the limit in qualifying setup for FP3, severely comprising starting grid position.",
-        telemetry: "P4 - Avg pace: 1:13.7s | Fastest lap: 1:12.9s (L70) | Deg: Moderate"
+        telemetry: "P4 - Avg pace: 1:13.7s | Fastest lap: 1:12.9s (L70) | Deg: Moderate",
+        laps: [
+          { lapNum: 1, time: "1:18.100", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 2, time: "1:15.800", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 3, time: "1:15.600", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 4, time: "1:15.400", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 5, time: "1:15.300", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 6, time: "1:15.300", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 7, time: "1:15.450", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 8, time: "1:15.600", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 9, time: "1:15.800", tyre: "Medium (C2)", pitStop: false },
+          { lapNum: 10, time: "1:16.100", tyre: "Medium (C2)", pitStop: false }
+        ]
       },
       {
         raceId: "italian-gp-26",
